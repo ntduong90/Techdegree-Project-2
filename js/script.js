@@ -37,6 +37,7 @@ function showPage (list, page) {
         div.appendChild(img);
         div.appendChild(h3);
         div.appendChild(span);
+
                          
 
         
