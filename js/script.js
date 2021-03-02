@@ -32,12 +32,32 @@ function showPage (list, page) {
         let img = document.createElement('img');
         let h3 = document.createElement('h3');
         let span = document.createElement('span');
+        let div2 = document.createElement('div');
+        let span2 = document.createElement('span');
+        
         studentList.appendChild(li);
         li.appendChild(div);
         div.appendChild(img);
         div.appendChild(h3);
         div.appendChild(span);
+        li.appendChild(div2);
+        div2.appendChild(span2);
+       
+        li.className = 'student-item cf';
+        div.className = 'student-details';   
+        
+        img.className = 'avatar';
+        img.src = `${data[i].picture.large}`;
+        img.alt = 'Profile Picture';
+        h3.textContent = `${data[i].name.first}` + ` ${data[i].name.last}`;
+        span.className = 'email';
+        span.textContent = `${data[i].email}`
 
+        div2.className = 'joined-details';
+        span2.className = 'date';
+        span2.textContent = `${data[i].registered.date}`;
+
+        
                          
 
         
