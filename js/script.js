@@ -26,7 +26,9 @@ function showPage (list, page) {
   studentList.innerHTML = '';
   for (i = 0; i < list.length; i++) {
       if (i >= startIndex && i < endIndex) {
-        let studentProfile = '';
+        
+        
+
         let li = document.createElement('li');
         let div = document.createElement('div');
         let img = document.createElement('img');
@@ -46,6 +48,8 @@ function showPage (list, page) {
         li.className = 'student-item cf';
         div.className = 'student-details';   
         
+        
+        
         img.className = 'avatar';
         img.src = `${data[i].picture.large}`;
         img.alt = 'Profile Picture';
@@ -56,13 +60,7 @@ function showPage (list, page) {
         div2.className = 'joined-details';
         span2.className = 'date';
         span2.textContent = `${data[i].registered.date}`;
-
-        
-                         
-
-        
-   
-                              
+                       
 
       }
    }
@@ -76,6 +74,34 @@ Create the `addPagination` function
 This function will create and insert/append the elements needed for the pagination buttons
 */
 
+function addPagination (list) {
+   let pageButton = Math.round(list.length/9); 
+   let pageList = document.querySelector('ul.link-list');
+   pageList.innerHTML = '';
 
+   for (let i = 0; i < pageButton; i++) {
+      
+      let button = document.createElement('button');
+      let li = document.createElement('li');
+
+      pageList.appendChild(li);
+      li.appendChild(button);
+
+      button.type="button";
+      let firstButton = document.querySelector('button');
+      firstButton.className = 'active';
+
+      pageList.addEventListener('click' , (e) => {
+         const buttons = document.querySelectorAll('button');
+         const buttonClick = e.target.clicked; 
+         if (buttonClick) {
+            console.log(1);
+         }
+      })
+
+   }
+
+}
+addPagination(data);
 
 // Call functions
