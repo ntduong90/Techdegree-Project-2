@@ -5,20 +5,7 @@ FSJS Project 2 - Data Pagination and Filtering
 
 
 
-/*
-For assistance:
-   Check out the "Project Resources" section of the Instructions tab: https://teamtreehouse.com/projects/data-pagination-and-filtering#instructions
-   Reach out in your Slack community: https://treehouse-fsjs-102.slack.com/app_redirect?channel=unit-2
-*/
-
-
-
-/*
-Create the `showPage` function
-This function will create and insert/append the elements needed to display a "page" of nine students
-*/
-
-
+//showPage function will create and append elements to display in HTML. 
 function showPage (data, page) {
   let startIndex = (page * 9) - 9;
   let endIndex = page * 9;
@@ -69,11 +56,10 @@ function showPage (data, page) {
 }
 
 
-/*
-Create the `addPagination` function
-This function will create and insert/append the elements needed for the pagination buttons
-*/
 
+//addPagination function will create page numbers up to max of given data taking into
+//account of 9 profiles per page. It will also include click event listener that
+//to go between pages.
 function addPagination (data) {
    let pageMaxNum = Math.round(data.length/9); 
    let pageList = document.querySelector('ul.link-list');
@@ -95,19 +81,23 @@ function addPagination (data) {
 
 
       pageList.addEventListener('click' , (e) => {
-         const buttonClick = e.target;
-         if (buttonClick) {
-            button.className = null;
-            buttonClick.className = 'active';
-            showPage(data, buttonClick.textContent);
+         let buttonClick = e.target;
+         if (buttonClick === pageList) {
+            buttonClick = null;
+         } else {
+               button.className = null;
+               buttonClick.className = 'active';
+               showPage(data, buttonClick.textContent);
+            }
             
-         }     
+            
+      });     
+   }     
          
          
-         
-      })
+   
 
-   }
+   
    
 }
 showPage(data, 1);
